@@ -21,18 +21,6 @@ class UserBuilder:
             verified=self._verified,
         )
 
-    def set_name(self, name: str):
-        self._name = name
-        return self
-
-    def set_email(self, email: str):
-        self._email = email
-        return self
-
-    def set_age(self, age: int):
-        self._age = age
-        return self
-
     def set_as_minor(self):
         self._age = 16
         return self
@@ -43,12 +31,4 @@ class UserBuilder:
 
     def set_as_foreign_user(self):
         self._address = Address("33 quai d'Orsay", "", "Paris", "75007", "France")
-        return self
-
-    def set_address(self, address: str):
-        self._address = address
-        return self
-
-    def set_verified(self, verified: bool):
-        self._verified = verified
         return self
