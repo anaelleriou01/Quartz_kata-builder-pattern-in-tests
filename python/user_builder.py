@@ -12,7 +12,7 @@ class UserBuilder:
         self._address = Address("51 Franklin Street", "Fifth Floor", "Boston", "02110", "USA")
         self._verified = True
 
-    def result(self):
+    def build(self):
         return User(
             name=self._name,
             email=self._email,
