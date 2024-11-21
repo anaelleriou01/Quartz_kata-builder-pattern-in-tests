@@ -1,50 +1,27 @@
-from shop import Shop, User
+from shop import Shop
+from user_builder import UserBuilder
 
 
 def test_happy_path(fsf_address):
-    user = User(
-        name="bob",
-        email="bob@domain.tld",
-        age=25,
-        address=fsf_address,
-        verified=True,
-    )
+    user = UserBuilder().result()
 
     assert Shop.can_order(user)
     assert not Shop.must_pay_foreign_fee(user)
 
 
 def test_minors_cannot_order_from_the_shop(fsf_address):
-    user = User(
-        name="bob",
-        email="bob@domain.tld",
-        age=16,
-        address=fsf_address,
-        verified=True,
-    )
+    user = UserBuilder().set_age(16).result()
 
     assert not Shop.can_order(user)
 
 
 def test_cannot_order_if_not_verified(fsf_address):
-    user = User(
-        name="bob",
-        email="bob@domain.tld",
-        age=19,
-        address=fsf_address,
-        verified=False,
-    )
+    user = UserBuilder().set_verified(False).result()
 
     assert not Shop.can_order(user)
 
 
 def test_foreigners_must_be_foreign_fee(paris_address):
-    user = User(
-        name="bob",
-        email="bob@domain.tld",
-        age=25,
-        address=paris_address,
-        verified=False,
-    )
+    user = UserBuilder().set_address(paris_address).result()
 
     assert Shop.must_pay_foreign_fee(user)
