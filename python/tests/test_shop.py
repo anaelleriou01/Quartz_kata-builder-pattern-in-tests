@@ -30,7 +30,7 @@ def test_cannot_order_if_not_verified(fsf_address):
     user = User(
         name="bob",
         email="bob@domain.tld",
-        age=16,
+        age=19,
         address=fsf_address,
         verified=False,
     )
