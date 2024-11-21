@@ -33,6 +33,18 @@ class UserBuilder:
         self._age = age
         return self
 
+    def set_as_minor(self):
+        self._age = 16
+        return self
+
+    def set_as_non_verified(self):
+        self._verified = False
+        return self
+
+    def set_as_foreign_user(self):
+        self._address = Address("33 quai d'Orsay", "", "Paris", "75007", "France")
+        return self
+
     def set_address(self, address: str):
         self._address = address
         return self

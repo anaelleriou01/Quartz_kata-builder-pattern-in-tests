@@ -1,6 +1,8 @@
 import pytest
 from shop import Address
 
+# TODO : Delete unused fixtures
+
 
 @pytest.fixture
 def fsf_address():
